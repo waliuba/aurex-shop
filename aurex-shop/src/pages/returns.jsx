@@ -4,7 +4,7 @@ import sizes from '../universal components/sizes';
 import Btn from '../universal components/ui/btns';
 import './pages.css';
 
-const Contact = () => {
+const Returns = () => {
   return (
     <main
       className="page"
@@ -19,8 +19,6 @@ const Contact = () => {
         '--page-border': colorstring.brand.third,
         '--page-fg': colorstring.fonts.main,
         '--page-muted': colorstring.fonts.sub,
-        '--btn-primary-bg': colorstring.buttons.btn2,
-        '--btn-primary-fg': colorstring.buttons.btn1,
         '--font-title': fonts.FontFamily.headlines,
         '--font-body': fonts.FontFamily.bodytxt,
         '--font-links': fonts.FontFamily.btns,
@@ -28,40 +26,35 @@ const Contact = () => {
     >
       <div className="container stack">
         <section className="hero">
-          <h1 className="hero__title">Contact</h1>
+          <h1 className="hero__title">Returns</h1>
           <p className="hero__subtitle">
-            Send us a message and we’ll get back to you. 
+            Simple return policy UI. Replace the text with your real policy.
+          </p>
+          <div className="actions">
+            <Btn variant="secondary" href="/#/contact">
+              Contact support
+            </Btn>
+          </div>
+        </section>
+
+        <section className="card">
+          <h2 className="sectionTitle">Return window</h2>
+          <p className="card__meta">
+            Returns accepted within 7–14 days of delivery if items are unused
+            and in original condition.
           </p>
         </section>
 
         <section className="card">
-          <h2 className="sectionTitle">Message</h2>
-          <form className="form" onSubmit={(event) => event.preventDefault()}>
-            <div className="field">
-              <label htmlFor="name">Name</label>
-              <input id="name" name="name" placeholder="Your name" />
-            </div>
-            <div className="field">
-              <label htmlFor="email">Email</label>
-              <input id="email" name="email" placeholder="you@example.com" />
-            </div>
-            <div className="field">
-              <label htmlFor="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows={5}
-                placeholder="How can we help?"
-              />
-            </div>
-            <div className="actions">
-              <Btn type="submit">Send Message</Btn>
-            </div>
-          </form>
+          <h2 className="sectionTitle">How to return</h2>
+          <p className="card__meta">
+            Reach out via the Contact page with your order details, then follow
+            the provided instructions.
+          </p>
         </section>
       </div>
     </main>
   );
 };
 
-export default Contact;
+export default Returns;

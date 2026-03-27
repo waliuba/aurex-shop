@@ -4,7 +4,7 @@ import sizes from '../universal components/sizes';
 import Btn from '../universal components/ui/btns';
 import './pages.css';
 
-const Contact = () => {
+const Register = () => {
   return (
     <main
       className="page"
@@ -19,8 +19,6 @@ const Contact = () => {
         '--page-border': colorstring.brand.third,
         '--page-fg': colorstring.fonts.main,
         '--page-muted': colorstring.fonts.sub,
-        '--btn-primary-bg': colorstring.buttons.btn2,
-        '--btn-primary-fg': colorstring.buttons.btn1,
         '--font-title': fonts.FontFamily.headlines,
         '--font-body': fonts.FontFamily.bodytxt,
         '--font-links': fonts.FontFamily.btns,
@@ -28,34 +26,38 @@ const Contact = () => {
     >
       <div className="container stack">
         <section className="hero">
-          <h1 className="hero__title">Contact</h1>
+          <h1 className="hero__title">Register</h1>
           <p className="hero__subtitle">
-            Send us a message and we’ll get back to you. 
+            Create an account to save your details and checkout faster. (UI-only
+            for now.)
           </p>
         </section>
 
         <section className="card">
-          <h2 className="sectionTitle">Message</h2>
+          <h2 className="sectionTitle">Create account</h2>
           <form className="form" onSubmit={(event) => event.preventDefault()}>
             <div className="field">
-              <label htmlFor="name">Name</label>
-              <input id="name" name="name" placeholder="Your name" />
+              <label htmlFor="reg-name">Full name</label>
+              <input id="reg-name" name="name" placeholder="Your name" />
             </div>
             <div className="field">
-              <label htmlFor="email">Email</label>
-              <input id="email" name="email" placeholder="you@example.com" />
+              <label htmlFor="reg-email">Email</label>
+              <input id="reg-email" name="email" placeholder="you@example.com" />
             </div>
             <div className="field">
-              <label htmlFor="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows={5}
-                placeholder="How can we help?"
+              <label htmlFor="reg-password">Password</label>
+              <input
+                id="reg-password"
+                name="password"
+                type="password"
+                placeholder="Create a password"
               />
             </div>
             <div className="actions">
-              <Btn type="submit">Send Message</Btn>
+              <Btn type="submit">Register</Btn>
+              <Btn variant="secondary" href="/#/login">
+                I have an account
+              </Btn>
             </div>
           </form>
         </section>
@@ -64,4 +66,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Register;

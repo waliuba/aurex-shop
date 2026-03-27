@@ -7,6 +7,11 @@ import Home from './pages/home';
 import Shop from './pages/shop';
 import About from './pages/about';
 import Contact from './pages/contact';
+import Login from './pages/login';
+import Register from './pages/register';
+import Shipping from './pages/shipping';
+import Returns from './pages/returns';
+import Faq from './pages/faq';
 
 const getHashRoute = () => {
   const hash = window.location.hash || '#/';
@@ -17,6 +22,11 @@ const getHashRoute = () => {
   if (path.startsWith('shop')) return 'shop';
   if (path.startsWith('about')) return 'about';
   if (path.startsWith('contact')) return 'contact';
+  if (path.startsWith('login')) return 'login';
+  if (path.startsWith('register')) return 'register';
+  if (path.startsWith('shipping')) return 'shipping';
+  if (path.startsWith('returns')) return 'returns';
+  if (path.startsWith('faq')) return 'faq';
 
   return 'home';
 };
@@ -37,7 +47,17 @@ function App() {
         ? About
         : route === 'contact'
           ? Contact
-          : Home;
+          : route === 'login'
+            ? Login
+            : route === 'register'
+              ? Register
+              : route === 'shipping'
+                ? Shipping
+                : route === 'returns'
+                  ? Returns
+                  : route === 'faq'
+                    ? Faq
+              : Home;
 
   return (
     <div className="App">

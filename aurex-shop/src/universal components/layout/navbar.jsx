@@ -2,13 +2,17 @@ import Images from '../imagestring';
 import colorstring from '../colorstring';
 import fonts from '../fonts';
 import sizes from '../sizes';
+import Btn from '../ui/btns';
 import './navbar.css';
+import Text from '../texttring';
+
+// navlinks
 
 const navLinks = [
-  { label: 'Home', href: '/#/' },
-  { label: 'Shop', href: '/#/shop' },
-  { label: 'About', href: '/#/about' },
-  { label: 'Contact', href: '/#/contact' },
+  { label: Text.navbar.home, href: '/#/' },
+  { label: Text.navbar.shop, href: '/#/Shop' },
+  { label: Text.navbar.about, href: '/#/About' },
+  { label: Text.navbar.contact, href: '/#/Contact' },
 ];
 
 const Navbar = () => {
@@ -30,9 +34,9 @@ const Navbar = () => {
         '--navbar-font': fonts.FontFamily.btns,
       }}
     >
-      <a className="navbar__brand" href="/">
+      <a className="navbar__brand" href="/#/">
         <img className="navbar__logo" src={Images.logo} alt="Aurex" />
-       
+        <span>Aurex</span>
       </a>
 
       <ul className="navbar__links">
@@ -44,6 +48,10 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
+
+      <div className="navbar__actions">
+        <Btn href="/#/register">Register</Btn>
+      </div>
     </nav>
   );
 };

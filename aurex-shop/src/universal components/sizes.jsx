@@ -24,7 +24,7 @@ const sizes = {
         paddingX: 24,
         paddingY: 28,
         gap: 18,
-        logoHeight: 32,
+        logoHeight: 40,
     },
 
     // pages
@@ -35,6 +35,15 @@ const sizes = {
         paddingY: 28,
         sectionGap: 22,
         cardRadius: 14,
+    },
+
+    // buttons
+
+    buttons: {
+        radius: 999,
+        paddingY: 10,
+        paddingX: 14,
+        fontSize: 14,
     },
 
     // icons

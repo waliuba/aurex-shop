@@ -46,50 +46,6 @@
   gap: 10px;
 }
 
-.btn {
-  appearance: none;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  padding: 10px 14px;
-  font-family: var(--font-links, Montserrat, sans-serif);
-  font-weight: 600;
-  font-size: 14px;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 120ms ease, background 120ms ease, color 120ms ease,
-    border-color 120ms ease;
-}
-
-.btn:active {
-  transform: translateY(1px);
-}
-
-.btn--primary {
-  background: var(--btn-primary-bg, #1c3934);
-  color: var(--btn-primary-fg, #f4f8f9);
-}
-
-.btn--primary:hover,
-.btn--primary:focus-visible {
-  outline: none;
-  background: #15312d;
-}
-
-.btn--secondary {
-  background: transparent;
-  border-color: var(--btn-secondary-border, #ced1c8);
-  color: var(--btn-secondary-fg, #1c3934);
-}
-
-.btn--secondary:hover,
-.btn--secondary:focus-visible {
-  outline: none;
-  background: rgba(206, 209, 200, 0.5);
-}
-
 .sectionTitle {
   margin: 0;
   font-family: var(--font-links, Montserrat, sans-serif);

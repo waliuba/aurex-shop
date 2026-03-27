@@ -4,7 +4,7 @@ import sizes from '../universal components/sizes';
 import Btn from '../universal components/ui/btns';
 import './pages.css';
 
-const Contact = () => {
+const Shipping = () => {
   return (
     <main
       className="page"
@@ -19,8 +19,6 @@ const Contact = () => {
         '--page-border': colorstring.brand.third,
         '--page-fg': colorstring.fonts.main,
         '--page-muted': colorstring.fonts.sub,
-        '--btn-primary-bg': colorstring.buttons.btn2,
-        '--btn-primary-fg': colorstring.buttons.btn1,
         '--font-title': fonts.FontFamily.headlines,
         '--font-body': fonts.FontFamily.bodytxt,
         '--font-links': fonts.FontFamily.btns,
@@ -28,40 +26,36 @@ const Contact = () => {
     >
       <div className="container stack">
         <section className="hero">
-          <h1 className="hero__title">Contact</h1>
+          <h1 className="hero__title">Shipping</h1>
           <p className="hero__subtitle">
-            Send us a message and we’ll get back to you. 
+            Clear, simple shipping information. Update these details to match
+            your real delivery options.
+          </p>
+          <div className="actions">
+            <Btn variant="secondary" href="/#/shop">
+              Continue shopping
+            </Btn>
+          </div>
+        </section>
+
+        <section className="card">
+          <h2 className="sectionTitle">Delivery times</h2>
+          <p className="card__meta">
+            Standard delivery: 2–5 business days. Express delivery: 1–2 business
+            days (where available).
           </p>
         </section>
 
         <section className="card">
-          <h2 className="sectionTitle">Message</h2>
-          <form className="form" onSubmit={(event) => event.preventDefault()}>
-            <div className="field">
-              <label htmlFor="name">Name</label>
-              <input id="name" name="name" placeholder="Your name" />
-            </div>
-            <div className="field">
-              <label htmlFor="email">Email</label>
-              <input id="email" name="email" placeholder="you@example.com" />
-            </div>
-            <div className="field">
-              <label htmlFor="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                rows={5}
-                placeholder="How can we help?"
-              />
-            </div>
-            <div className="actions">
-              <Btn type="submit">Send Message</Btn>
-            </div>
-          </form>
+          <h2 className="sectionTitle">Shipping fees</h2>
+          <p className="card__meta">
+            Shipping fees are calculated at checkout based on location and
+            order size.
+          </p>
         </section>
       </div>
     </main>
   );
 };
 
-export default Contact;
+export default Shipping;

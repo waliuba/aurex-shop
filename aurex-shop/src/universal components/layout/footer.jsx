@@ -3,22 +3,23 @@ import colorstring from '../colorstring';
 import fonts from '../fonts';
 import sizes from '../sizes';
 import './footer.css';
+import Text from '../texttring';
 
 const footerLinks = {
   Company: [
-    { label: 'About', href: '/#/about' },
-    { label: 'Shop', href: '/#/shop' },
-    { label: 'Contact', href: '/#/contact' },
+    { label: Text.navbar.about, href: '/#/about' },
+    { label: Text.navbar.shop, href: '/#/shop' },
+    { label: Text.navbar.contact, href: '/#/contact' },
   ],
   Support: [
-    { label: 'Shipping', href: '/' },
-    { label: 'Returns', href: '/' },
-    { label: 'FAQ', href: '/' },
+    { label: Text.footer.Shipping, href: '/#/shipping' },
+    { label: Text.footer.Returns, href: '/#/returns' },
+    { label: Text.footer.Faq, href: '/#/faq' },
   ],
 };
 
 const Footer = () => {
-  const year = new Date().getFullYear();
+  
 
   return (
     <footer
@@ -41,11 +42,10 @@ const Footer = () => {
         <div>
           <div className="footer__brand">
             <img className="footer__logo" src={Images.logo} alt="Aurex" />
-            <h3 className="footer__title">Aurex</h3>
+            <h3 className="footer__title">{Text.tittle.head}</h3>
           </div>
           <p className="footer__tagline">
-            Quality pieces, curated with care. Shop the latest and timeless
-            essentials.
+            {Text.footer.tagline}
           </p>
         </div>
 
@@ -66,8 +66,8 @@ const Footer = () => {
       </div>
 
       <div className="footer__bottom">
-        <span>{'\u00A9'} {year} Aurex. All rights reserved.</span>
-        <span>Made with care.</span>
+        <span>{Text.declaration.Copyright}</span>
+        <span>{Text.declaration.madewith}</span>
       </div>
     </footer>
   );

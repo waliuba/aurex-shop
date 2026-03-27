@@ -3,9 +3,10 @@
   padding: 0 var(--navbar-padding-x, 24px);
   background: var(--navbar-bg, #f4f8f9);
   border-bottom: 1px solid var(--navbar-border, #ced1c8);
-  display: flex;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
-  justify-content: space-between;
+  gap: 12px;
 }
 
 .navbar__brand {
@@ -33,6 +34,8 @@
   display: flex;
   align-items: center;
   gap: var(--navbar-gap, 24px);
+  justify-content: center;
+  justify-self: center;
 }
 
 .navbar__link {
@@ -51,6 +54,13 @@
   background: var(--navbar-link-hover-bg, #ced1c8);
   color: var(--navbar-link-hover, #1c3934);
   outline: none;
+}
+
+.navbar__actions {
+  justify-self: end;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
 }
 
 @media (max-width: 640px) {
