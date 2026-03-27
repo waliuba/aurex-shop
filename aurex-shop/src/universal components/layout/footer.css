@@ -1,0 +1,106 @@
+.footer {
+  padding: var(--footer-padding-y, 28px) var(--footer-padding-x, 24px);
+  background: var(--footer-bg, #1c3934);
+  color: var(--footer-fg, #f4f8f9);
+}
+
+.footer__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: var(--footer-gap, 18px);
+  align-items: start;
+}
+
+.footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer__logo {
+  height: var(--footer-logo-height, 32px);
+  width: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.footer__title {
+  margin: 0;
+  font-family: var(--footer-font-title, "Playfair Display", serif);
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.footer__tagline {
+  margin: 6px 0 0;
+  color: var(--footer-muted, #ced1c8);
+  font-family: var(--footer-font-body, Lora, serif);
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.footer__sectionTitle {
+  margin: 0 0 10px;
+  font-family: var(--footer-font-links, Montserrat, sans-serif);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: var(--footer-fg, #f4f8f9);
+}
+
+.footer__links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.footer__link {
+  color: var(--footer-muted, #ced1c8);
+  text-decoration: none;
+  font-family: var(--footer-font-links, Montserrat, sans-serif);
+  font-weight: 500;
+  font-size: 14px;
+  display: inline-flex;
+  width: fit-content;
+  padding: 6px 8px;
+  border-radius: 10px;
+  transition: background 120ms ease, color 120ms ease;
+}
+
+.footer__link:hover,
+.footer__link:focus-visible {
+  color: var(--footer-fg, #f4f8f9);
+  background: rgba(244, 248, 249, 0.12);
+  outline: none;
+}
+
+.footer__bottom {
+  max-width: 1100px;
+  margin: 18px auto 0;
+  padding-top: 14px;
+  border-top: 1px solid rgba(244, 248, 249, 0.14);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--footer-muted, #ced1c8);
+  font-family: var(--footer-font-links, Montserrat, sans-serif);
+  font-size: 13px;
+}
+
+@media (max-width: 820px) {
+  .footer__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__bottom {
+    justify-content: flex-start;
+  }
+}
