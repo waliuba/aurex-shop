@@ -1,4 +1,5 @@
 import colorstring from '../universal components/colorstring';
+import Text from '../universal components/texttring';
 import fonts from '../universal components/fonts';
 import sizes from '../universal components/sizes';
 import Btn from '../universal components/ui/btns';
@@ -26,32 +27,32 @@ const Login = () => {
     >
       <div className="container stack">
         <section className="hero">
-          <h1 className="hero__title">Login</h1>
+          <h1 className="hero__title">{Text.tittle.hero_tittle2}</h1>
           <p className="hero__subtitle">
-            Welcome back. This is UI-only for now.
+           {Text.tittle.hero_sub_tittle2} 
           </p>
         </section>
 
         <section className="card">
-          <h2 className="sectionTitle">Account</h2>
+          <h2 className="sectionTitle">{Text.login.sectiontile}</h2>
           <form className="form" onSubmit={(event) => event.preventDefault()}>
             <div className="field">
-              <label htmlFor="login-email">Email</label>
-              <input id="login-email" name="email" placeholder="you@example.com" />
+              <label htmlFor="login-email">{Text.login.form.email.label}</label>
+              <input id="login-email" name="email" placeholder={Text.login.form.email.placeholder} />
             </div>
             <div className="field">
-              <label htmlFor="login-password">Password</label>
+              <label htmlFor="login-password">{Text.login.form.password.label}</label>
               <input
                 id="login-password"
                 name="password"
                 type="password"
-                placeholder="••••••••"
+                placeholder= {Text.login.form.password.placeholder}
               />
             </div>
             <div className="actions">
-              <Btn type="submit">Login</Btn>
+              <Btn type="submit">{Text.btns.login2}</Btn>
               <Btn variant="secondary" href="/#/register">
-                Create account
+                {Text.btns.register2}
               </Btn>
             </div>
           </form>

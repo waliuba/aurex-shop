@@ -1,4 +1,5 @@
 import colorstring from '../universal components/colorstring';
+import Text from '../universal components/texttring';
 import fonts from '../universal components/fonts';
 import sizes from '../universal components/sizes';
 import Btn from '../universal components/ui/btns';
@@ -26,37 +27,34 @@ const Register = () => {
     >
       <div className="container stack">
         <section className="hero">
-          <h1 className="hero__title">Register</h1>
-          <p className="hero__subtitle">
-            Create an account to save your details and checkout faster. (UI-only
-            for now.)
-          </p>
+          <h1 className="hero__title">{Text.tittle.hero_tittle}</h1>
+          <p className="hero__subtitle">{Text.tittle.hero_sub_tittle}</p>
         </section>
 
         <section className="card">
-          <h2 className="sectionTitle">Create account</h2>
+          <h2 className="sectionTitle">{Text.reg.sectiontile}</h2>
           <form className="form" onSubmit={(event) => event.preventDefault()}>
             <div className="field">
-              <label htmlFor="reg-name">Full name</label>
-              <input id="reg-name" name="name" placeholder="Your name" />
+              <label htmlFor="reg-name">{Text.reg.form.name.label}</label>
+              <input id="reg-name" name="name" placeholder= {Text.reg.form.name.placeholder} />
             </div>
             <div className="field">
-              <label htmlFor="reg-email">Email</label>
-              <input id="reg-email" name="email" placeholder="you@example.com" />
+              <label htmlFor="reg-email">{Text.reg.form.email.label}</label>
+              <input id="reg-email" name="email" placeholder= {Text.reg.form.email.placeholder} />
             </div>
             <div className="field">
-              <label htmlFor="reg-password">Password</label>
+              <label htmlFor="reg-password">{Text.reg.form.password.label}</label>
               <input
                 id="reg-password"
                 name="password"
                 type="password"
-                placeholder="Create a password"
+                placeholder={Text.reg.form.password.placeholder}
               />
             </div>
             <div className="actions">
-              <Btn type="submit">Register</Btn>
+              <Btn type="submit">{Text.btns.register}</Btn>
               <Btn variant="secondary" href="/#/login">
-                I have an account
+               {Text.btns.login}
               </Btn>
             </div>
           </form>

@@ -62,6 +62,62 @@
   gap: 14px;
 }
 
+.carouselHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.carouselControls {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.carousel {
+  width: 100%;
+}
+
+.carousel__viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  padding-bottom: 6px;
+}
+
+.carousel__viewport:focus-visible {
+  outline: 2px solid var(--page-title, #1c3934);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.carousel__track {
+  display: flex;
+  gap: 14px;
+  padding: 2px;
+}
+
+.carousel__slide {
+  flex: 0 0 clamp(220px, 72vw, 260px);
+  scroll-snap-align: start;
+}
+
+.carousel__viewport::-webkit-scrollbar {
+  height: 10px;
+}
+
+.carousel__viewport::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 999px;
+}
+
+.carousel__viewport::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 999px;
+}
+
 .card {
   border: 1px solid var(--page-border, #ced1c8);
   border-radius: var(--page-card-radius, 14px);

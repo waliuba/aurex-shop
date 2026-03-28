@@ -2,6 +2,7 @@ import './App.css';
 import Navbar from './universal components/layout/navbar';
 import Footer from './universal components/layout/footer';
 import { useEffect, useState } from 'react';
+import AdminApp from './admin/AdminApp';
 
 import Home from './pages/home';
 import Shop from './pages/shop';
@@ -13,57 +14,55 @@ import Shipping from './pages/shipping';
 import Returns from './pages/returns';
 import Faq from './pages/faq';
 
-const getHashRoute = () => {
+const getHashPath = () => {
   const hash = window.location.hash || '#/';
   const cleaned = hash.replace(/^#\/?/, '');
   const path = cleaned.split('?')[0].toLowerCase();
-
-  if (path === '' || path === '/') return 'home';
-  if (path.startsWith('shop')) return 'shop';
-  if (path.startsWith('about')) return 'about';
-  if (path.startsWith('contact')) return 'contact';
-  if (path.startsWith('login')) return 'login';
-  if (path.startsWith('register')) return 'register';
-  if (path.startsWith('shipping')) return 'shipping';
-  if (path.startsWith('returns')) return 'returns';
-  if (path.startsWith('faq')) return 'faq';
-
-  return 'home';
+  return path === '/' ? '' : path;
 };
 
 function App() {
-  const [route, setRoute] = useState(getHashRoute());
+  const [path, setPath] = useState(getHashPath());
 
   useEffect(() => {
-    const onChange = () => setRoute(getHashRoute());
+    const onChange = () => setPath(getHashPath());
     window.addEventListener('hashchange', onChange);
     return () => window.removeEventListener('hashchange', onChange);
   }, []);
 
+  const isAdmin = path.startsWith('admin');
+
+  const storeRoute = path;
   const Page =
-    route === 'shop'
+    storeRoute.startsWith('shop')
       ? Shop
-      : route === 'about'
+      : storeRoute.startsWith('about')
         ? About
-        : route === 'contact'
+        : storeRoute.startsWith('contact')
           ? Contact
-          : route === 'login'
+          : storeRoute.startsWith('login')
             ? Login
-            : route === 'register'
+            : storeRoute.startsWith('register')
               ? Register
-              : route === 'shipping'
+              : storeRoute.startsWith('shipping')
                 ? Shipping
-                : route === 'returns'
+                : storeRoute.startsWith('returns')
                   ? Returns
-                  : route === 'faq'
+                  : storeRoute.startsWith('faq')
                     ? Faq
-              : Home;
+                    : Home;
 
   return (
     <div className="App">
-      <Navbar />
-      <Page />
-      <Footer />
+      {isAdmin ? (
+        <AdminApp path={path} />
+      ) : (
+        <>
+          <Navbar />
+          <Page />
+          <Footer />
+        </>
+      )}
     </div>
   );
 }
