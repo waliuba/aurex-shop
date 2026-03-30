@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import colorstring from '../universal components/colorstring';
+import colorstring from '../universal components/colorstrings';
 import fonts from '../universal components/fonts';
 import sizes from '../universal components/sizes';
+import Text from '../universal components/textstring';
 import './pages.css';
 
 const featuredItems = [
@@ -85,24 +86,21 @@ const Home = () => {
     >
       <div className="container stack">
         <section className="hero">
-          <h1 className="hero__title">Aurex Shop</h1>
-          <p className="hero__subtitle">
-            Discover curated essentials with a clean, modern look. Shop new
-            arrivals, explore categories, and find pieces that fit your style.
-          </p>
+          <h1 className="hero__title">{Text.pages.home.title}</h1>
+          <p className="hero__subtitle">{Text.pages.home.subtitle}</p>
           <div className="actions">
             <a className="btn btn--primary" href="/#/shop">
-              Browse Shop
+              {Text.pages.home.ctas.browseShop}
             </a>
             <a className="btn btn--secondary" href="/#/about">
-              Learn More
+              {Text.pages.home.ctas.learnMore}
             </a>
           </div>
         </section>
 
         <section className="stack">
           <div className="carouselHeader">
-            <h2 className="sectionTitle">Featured</h2>
+            <h2 className="sectionTitle">{Text.pages.home.featuredTitle}</h2>
             <div className="carouselControls">
               <button
                 type="button"
@@ -110,7 +108,7 @@ const Home = () => {
                 onClick={() => scrollToIndex(activeIndex - 1)}
                 disabled={activeIndex === 0}
               >
-                Prev
+                {Text.pages.home.carousel.prev}
               </button>
               <button
                 type="button"
@@ -118,12 +116,12 @@ const Home = () => {
                 onClick={() => scrollToIndex(activeIndex + 1)}
                 disabled={activeIndex === featuredItems.length - 1}
               >
-                Next
+                {Text.pages.home.carousel.next}
               </button>
             </div>
           </div>
 
-          <div className="carousel" aria-roledescription="carousel" aria-label="Featured products">
+          <div className="carousel" aria-roledescription="carousel" aria-label={Text.pages.home.carousel.ariaLabel}>
             <div className="carousel__viewport" ref={viewportRef} tabIndex={0}>
               <div className="carousel__track">
                 {featuredItems.map((item, index) => (

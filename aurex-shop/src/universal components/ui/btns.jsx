@@ -1,4 +1,4 @@
-import colorstring from '../colorstring';
+import colorstring from '../colorstrings';
 import fonts from '../fonts';
 import sizes from '../sizes';
 import './btns.css';

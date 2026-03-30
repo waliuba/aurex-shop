@@ -1,0 +1,401 @@
+.meridian {
+  min-height: 100vh;
+  background: #0f1014;
+  color: rgba(255, 255, 255, 0.92);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+}
+
+.mdLayout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+}
+
+.mdSidebar {
+  padding: 18px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(15, 16, 20, 0.75);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.mdBrand {
+  display: grid;
+  gap: 6px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 14px;
+}
+
+.mdBrand__kicker {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.mdBrand__title {
+  font-size: 18px;
+  font-weight: 850;
+}
+
+.mdNav {
+  display: grid;
+  gap: 8px;
+}
+
+.mdNav a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.92);
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mdNav a:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.mdMain {
+  padding: 18px 22px;
+}
+
+.mdTopbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.mdTopbar__title h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.mdTopbar__title p {
+  margin: 4px 0 0;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.mdTopbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mdInput {
+  height: 38px;
+  padding: 0 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.92);
+  outline: none;
+  min-width: 260px;
+}
+
+.mdInput::placeholder {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.mdBtn {
+  height: 38px;
+  padding: 0 14px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mdBtn--primary {
+  background: linear-gradient(180deg, rgba(200, 169, 106, 0.98), rgba(200, 169, 106, 0.82));
+  color: #14151a;
+}
+
+.mdBtn--outline {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.mdBtn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.mdGrid {
+  display: grid;
+  gap: 14px;
+}
+
+.mdGrid--metrics {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.mdGrid--main {
+  grid-template-columns: 1.7fr 1fr;
+  align-items: start;
+}
+
+.mdCard {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.mdMetric__label {
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 12px;
+}
+
+.mdMetric__value {
+  font-size: 24px;
+  font-weight: 900;
+  margin-top: 6px;
+}
+
+.mdMetric__change {
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.mdMetric__change--up {
+  color: rgba(52, 211, 153, 0.92);
+}
+
+.mdMetric__change--down {
+  color: rgba(249, 115, 115, 0.95);
+}
+
+.mdMetric__change--flat {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.mdTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mdTable th,
+.mdTable td {
+  text-align: left;
+  padding: 10px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 13px;
+}
+
+.mdMuted {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.mdPill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  text-transform: capitalize;
+}
+
+.mdPill--processing {
+  border-color: rgba(251, 191, 36, 0.35);
+  background: rgba(251, 191, 36, 0.14);
+}
+
+.mdPill--pending {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.mdPill--shipped {
+  border-color: rgba(200, 169, 106, 0.55);
+  background: rgba(200, 169, 106, 0.14);
+}
+
+.mdPill--delivered {
+  border-color: rgba(52, 211, 153, 0.32);
+  background: rgba(52, 211, 153, 0.12);
+}
+
+.mdProductCard {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 14px;
+  padding: 12px;
+  display: grid;
+  gap: 10px;
+}
+
+.mdProductCard__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.mdProductCard__name {
+  font-weight: 850;
+}
+
+.mdProductCard__sku {
+  margin-top: 4px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.mdProductCard__swatchWrap {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.18);
+  display: grid;
+  place-items: center;
+}
+
+.mdProductCard__swatch {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.mdProductCard__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.mdProductCard__actions {
+  display: flex;
+  gap: 10px;
+}
+
+.mdOk {
+  color: rgba(52, 211, 153, 0.92);
+}
+
+.mdWarn {
+  color: rgba(251, 191, 36, 0.92);
+}
+
+.mdModalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  z-index: 50;
+}
+
+.mdModal {
+  width: min(840px, 100%);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(15, 16, 20, 0.95);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.mdModal__header,
+.mdModal__footer {
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mdModal__footer {
+  border-bottom: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mdModal__title {
+  font-weight: 900;
+}
+
+.mdModal__body {
+  padding: 14px;
+}
+
+.mdCartRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mdCartRow:last-child {
+  border-bottom: none;
+}
+
+.mdCartRow__right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.mdCartRow__name {
+  font-weight: 800;
+}
+
+.mdCartRow__price {
+  min-width: 92px;
+  text-align: right;
+}
+
+.mdQty {
+  width: 72px;
+  height: 36px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.92);
+  padding: 0 10px;
+}
+
+.mdModal__total {
+  display: grid;
+  gap: 2px;
+}
+
+.mdModal__footerActions {
+  display: flex;
+  gap: 10px;
+}
+
+@media (max-width: 980px) {
+  .mdLayout {
+    grid-template-columns: 1fr;
+  }
+  .mdSidebar {
+    position: relative;
+    height: auto;
+  }
+  .mdGrid--metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .mdGrid--main {
+    grid-template-columns: 1fr;
+  }
+  .mdInput {
+    min-width: 0;
+    width: 100%;
+  }
+}
+

@@ -1,23 +1,9 @@
-import colorstring from '../universal components/colorstring';
+import colorstring from '../universal components/colorstrings';
 import fonts from '../universal components/fonts';
 import sizes from '../universal components/sizes';
 import Btn from '../universal components/ui/btns';
+import Text from '../universal components/textstring';
 import './pages.css';
-
-const items = [
-  {
-    q: 'Do you offer cash on delivery?',
-    a: 'Add your payment options here. This is placeholder content.',
-  },
-  {
-    q: 'How long does delivery take?',
-    a: 'Standard delivery is usually 2–5 business days depending on location.',
-  },
-  {
-    q: 'Can I return an item?',
-    a: 'Yes—see the Returns page for the full policy and steps.',
-  },
-];
 
 const Faq = () => {
   return (
@@ -41,21 +27,19 @@ const Faq = () => {
     >
       <div className="container stack">
         <section className="hero">
-          <h1 className="hero__title">FAQ</h1>
-          <p className="hero__subtitle">
-            Quick answers to common questions.
-          </p>
+          <h1 className="hero__title">{Text.pages.faq.title}</h1>
+          <p className="hero__subtitle">{Text.pages.faq.subtitle}</p>
           <div className="actions">
             <Btn variant="secondary" href="/#/contact">
-              Ask a question
+              {Text.pages.faq.askQuestion}
             </Btn>
           </div>
         </section>
 
         <section className="stack">
-          <h2 className="sectionTitle">Questions</h2>
+          <h2 className="sectionTitle">{Text.pages.faq.questionsTitle}</h2>
           <div className="grid" style={{ gridTemplateColumns: '1fr' }}>
-            {items.map((item) => (
+            {Text.pages.faq.items.map((item) => (
               <div className="card" key={item.q}>
                 <h3 className="card__name">{item.q}</h3>
                 <p className="card__meta">{item.a}</p>

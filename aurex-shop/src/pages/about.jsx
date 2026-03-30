@@ -1,6 +1,7 @@
-import colorstring from '../universal components/colorstring';
+import colorstring from '../universal components/colorstrings';
 import fonts from '../universal components/fonts';
 import sizes from '../universal components/sizes';
+import Text from '../universal components/textstring';
 import './pages.css';
 
 const About = () => {
@@ -25,22 +26,13 @@ const About = () => {
     >
       <div className="container stack">
         <section className="hero">
-          <h1 className="hero__title">About Aurex</h1>
-          <p className="hero__subtitle">
-            Aurex is built around clean design and curated essentials. The goal
-            is simple: make it easy to find quality pieces that look good and
-            feel right.
-          </p>
+          <h1 className="hero__title">{Text.pages.about.title}</h1>
+          <p className="hero__subtitle">{Text.pages.about.subtitle}</p>
         </section>
 
         <section className="card">
-          <h2 className="sectionTitle">Our Style</h2>
-          <p className="card__meta">
-            We keep the palette calm and premium, focus on typography, and let
-            the product speak. This project is structured to scale: you can
-            plug in real products, categories, and payments later without
-            changing the visual system.
-          </p>
+          <h2 className="sectionTitle">{Text.pages.about.style.title}</h2>
+          <p className="card__meta">{Text.pages.about.style.body}</p>
         </section>
       </div>
     </main>

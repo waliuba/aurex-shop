@@ -73,4 +73,5 @@ const fonts = {
   },
 };
 
+export { FontFamily, FontWeight };
 export default fonts;

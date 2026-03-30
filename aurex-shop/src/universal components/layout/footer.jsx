@@ -1,22 +1,28 @@
 import Images from '../imagestring';
-import colorstring from '../colorstring';
+import colorstring from '../colorstrings';
 import fonts from '../fonts';
 import sizes from '../sizes';
 import './footer.css';
-import Text from '../texttring';
+import Text from '../textstring';
 
-const footerLinks = {
-  Company: [
-    { label: Text.navbar.about, href: '/#/about' },
-    { label: Text.navbar.shop, href: '/#/shop' },
-    { label: Text.navbar.contact, href: '/#/contact' },
-  ],
-  Support: [
-    { label: Text.footer.Shipping, href: '/#/shipping' },
-    { label: Text.footer.Returns, href: '/#/returns' },
-    { label: Text.footer.Faq, href: '/#/faq' },
-  ],
-};
+const footerLinks = [
+  {
+    title: Text.footer.sections.company,
+    links: [
+      { label: Text.navbar.about, href: '/#/about' },
+      { label: Text.navbar.shop, href: '/#/shop' },
+      { label: Text.navbar.contact, href: '/#/contact' },
+    ],
+  },
+  {
+    title: Text.footer.sections.support,
+    links: [
+      { label: Text.footer.Shipping, href: '/#/shipping' },
+      { label: Text.footer.Returns, href: '/#/returns' },
+      { label: Text.footer.Faq, href: '/#/faq' },
+    ],
+  },
+];
 
 const Footer = () => {
   
@@ -24,7 +30,7 @@ const Footer = () => {
   return (
     <footer
       className="footer"
-      aria-label="Footer"
+      aria-label={Text.footer.ariaLabel}
       style={{
         '--footer-padding-x': `${sizes.footer.paddingX}px`,
         '--footer-padding-y': `${sizes.footer.paddingY}px`,
@@ -41,7 +47,7 @@ const Footer = () => {
       <div className="footer__inner">
         <div>
           <div className="footer__brand">
-            <img className="footer__logo" src={Images.logo} alt="Aurex" />
+            <img className="footer__logo" src={Images.logo} alt={Text.tittle.head} />
             <h3 className="footer__title">{Text.tittle.head}</h3>
           </div>
           <p className="footer__tagline">
@@ -49,11 +55,11 @@ const Footer = () => {
           </p>
         </div>
 
-        {Object.entries(footerLinks).map(([sectionTitle, links]) => (
-          <div key={sectionTitle}>
-            <h4 className="footer__sectionTitle">{sectionTitle}</h4>
+        {footerLinks.map((section) => (
+          <div key={section.title}>
+            <h4 className="footer__sectionTitle">{section.title}</h4>
             <ul className="footer__links">
-              {links.map((link) => (
+              {section.links.map((link) => (
                 <li key={link.label}>
                   <a className="footer__link" href={link.href}>
                     {link.label}

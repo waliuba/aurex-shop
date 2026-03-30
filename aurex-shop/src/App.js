@@ -3,6 +3,10 @@ import Navbar from './universal components/layout/navbar';
 import Footer from './universal components/layout/footer';
 import { useEffect, useState } from 'react';
 import AdminApp from './admin/AdminApp';
+import Aurex from './u-dashboard/Aurex-shop';
+import { CartProvider } from './context/CartContext';
+import { SessionProvider } from './context/SessionContext';
+import CartModal from './universal components/ui/CartModal';
 
 import Home from './pages/home';
 import Shop from './pages/shop';
@@ -13,6 +17,7 @@ import Register from './pages/register';
 import Shipping from './pages/shipping';
 import Returns from './pages/returns';
 import Faq from './pages/faq';
+import Dashboard from './pages/dashboard';
 
 const getHashPath = () => {
   const hash = window.location.hash || '#/';
@@ -31,37 +36,43 @@ function App() {
   }, []);
 
   const isAdmin = path.startsWith('admin');
+  const isAurex = path.startsWith('aurex');
 
-  const storeRoute = path;
-  const Page =
-    storeRoute.startsWith('shop')
-      ? Shop
-      : storeRoute.startsWith('about')
-        ? About
-        : storeRoute.startsWith('contact')
-          ? Contact
-          : storeRoute.startsWith('login')
-            ? Login
-            : storeRoute.startsWith('register')
-              ? Register
-              : storeRoute.startsWith('shipping')
-                ? Shipping
-                : storeRoute.startsWith('returns')
-                  ? Returns
-                  : storeRoute.startsWith('faq')
-                    ? Faq
-                    : Home;
+  const pages = {
+    '': Home,
+    home: Home,
+    register: Register,
+    login: Login,
+    dashboard: Dashboard,
+    shop: Shop,
+    about: About,
+    contact: Contact,
+    shipping: Shipping,
+    returns: Returns,
+    faq: Faq,
+  };
+
+  const routeKey = path.split('/')[0];
+  const Page = pages[routeKey] || Home;
+
+
+
 
   return (
     <div className="App">
       {isAdmin ? (
         <AdminApp path={path} />
+      ) : isAurex ? (
+        <Aurex />
       ) : (
-        <>
-          <Navbar />
-          <Page />
-          <Footer />
-        </>
+        <SessionProvider>
+          <CartProvider>
+            <Navbar />
+            <Page />
+            <Footer />
+            <CartModal />
+          </CartProvider>
+        </SessionProvider>
       )}
     </div>
   );

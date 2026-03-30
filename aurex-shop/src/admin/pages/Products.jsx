@@ -8,6 +8,9 @@ import Input from '../components/ui/Input';
 import Modal from '../components/ui/Modal';
 import Spinner from '../components/ui/Spinner';
 import Table from '../components/ui/Table';
+import sizes from '../../universal components/sizes';
+import Text from '../../universal components/textstring';
+import colorstring from '../../universal components/colorstrings';
 
 const initial = {
   loading: true,
@@ -22,7 +25,7 @@ function reducer(state, action) {
     case 'LOAD_SUCCESS':
       return { loading: false, error: null, products: action.products };
     case 'LOAD_ERROR':
-      return { ...state, loading: false, error: action.error || 'Failed to load data' };
+      return { ...state, loading: false, error: action.error || Text.admin.common.failedToLoad };
     case 'UPSERT':
       return {
         ...state,
@@ -77,7 +80,7 @@ const ProductForm = ({ open, onClose, initialValue, onSave }) => {
       });
       onClose();
     } catch (e) {
-      setError(e?.message || 'Failed to save product');
+      setError(e?.message || Text.admin.products.form.errors.failedToSave);
     } finally {
       setSaving(false);
     }
@@ -85,45 +88,65 @@ const ProductForm = ({ open, onClose, initialValue, onSave }) => {
 
   return (
     <Modal
-      title={initialValue ? 'Edit product' : 'New product'}
+      title={initialValue ? Text.admin.products.form.editTitle : Text.admin.products.form.newTitle}
       open={open}
       onClose={saving ? undefined : onClose}
       footer={
         <>
           <Button variant="secondary" onClick={onClose} disabled={saving}>
-            Cancel
+            {Text.admin.actions.cancel}
           </Button>
           <Button onClick={submit} disabled={saving}>
-            {saving ? 'Saving…' : 'Save'}
+            {saving ? Text.admin.common.saving : Text.admin.actions.save}
           </Button>
         </>
       }
     >
       <div className="adminGrid adminGrid--2">
-        <Input label="Name" value={name} onChange={(e) => setName(e.target.value)} placeholder="Navy Wool Suit" />
         <Input
-          label="Price"
+          label={Text.admin.products.form.fields.name.label}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder={Text.admin.products.form.fields.name.placeholder}
+        />
+        <Input
+          label={Text.admin.products.form.fields.price.label}
           value={price}
           onChange={(e) => setPrice(e.target.value)}
-          placeholder="249"
+          placeholder={Text.admin.products.form.fields.price.placeholder}
           inputMode="decimal"
         />
-        <Input label="Size" value={size} onChange={(e) => setSize(e.target.value)} placeholder="S / M / L" />
-        <Input label="Color" value={color} onChange={(e) => setColor(e.target.value)} placeholder="Navy" />
         <Input
-          label="Stock"
+          label={Text.admin.products.form.fields.size.label}
+          value={size}
+          onChange={(e) => setSize(e.target.value)}
+          placeholder={Text.admin.products.form.fields.size.placeholder}
+        />
+        <Input
+          label={Text.admin.products.form.fields.color.label}
+          value={color}
+          onChange={(e) => setColor(e.target.value)}
+          placeholder={Text.admin.products.form.fields.color.placeholder}
+        />
+        <Input
+          label={Text.admin.products.form.fields.stock.label}
           value={stock}
           onChange={(e) => setStock(e.target.value)}
-          placeholder="12"
+          placeholder={Text.admin.products.form.fields.stock.placeholder}
           inputMode="numeric"
         />
-        <Input label="Category" value={category} onChange={(e) => setCategory(e.target.value)} placeholder="Suits" />
+        <Input
+          label={Text.admin.products.form.fields.category.label}
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          placeholder={Text.admin.products.form.fields.category.placeholder}
+        />
       </div>
 
-      <div style={{ marginTop: 12, display: 'grid', gap: 10 }}>
+      <div style={{ marginTop: sizes.admin.products.formMediaMarginTop, display: 'grid', gap: sizes.admin.products.formMediaGap }}>
         <Input
-          label="Image"
-          helpText="Upload an image (preview stays local in mock mode)."
+          label={Text.admin.products.form.fields.image.label}
+          helpText={Text.admin.products.form.fields.image.helpText}
           type="file"
           accept="image/*"
           onChange={(e) => {
@@ -137,13 +160,22 @@ const ProductForm = ({ open, onClose, initialValue, onSave }) => {
         {preview ? (
           <div
             style={{
-              border: '1px solid rgba(255,255,255,0.12)',
-              borderRadius: 16,
+              border: `1px solid ${colorstring.admin.border}`,
+              borderRadius: sizes.admin.products.previewRadius,
               overflow: 'hidden',
-              background: 'rgba(255,255,255,0.03)',
+              background: colorstring.admin.panelSoft,
             }}
           >
-            <img src={preview} alt="Preview" style={{ width: '100%', display: 'block', maxHeight: 220, objectFit: 'cover' }} />
+            <img
+              src={preview}
+              alt={Text.admin.products.form.fields.image.previewAlt}
+              style={{
+                width: '100%',
+                display: 'block',
+                maxHeight: sizes.admin.products.previewMaxHeight,
+                objectFit: 'cover',
+              }}
+            />
           </div>
         ) : null}
         {error ? <div className="uiErrorText">{error}</div> : null}
@@ -165,7 +197,7 @@ const Products = () => {
       const products = await getProducts();
       dispatch({ type: 'LOAD_SUCCESS', products });
     } catch (e) {
-      dispatch({ type: 'LOAD_ERROR', error: e?.message || 'Failed to load data' });
+      dispatch({ type: 'LOAD_ERROR', error: e?.message || Text.admin.common.failedToLoad });
     }
   };
 
@@ -176,16 +208,20 @@ const Products = () => {
 
   const columns = useMemo(
     () => [
-      { key: 'name', header: 'Product', render: (p) => <strong>{p.name}</strong> },
-      { key: 'category', header: 'Category' },
-      { key: 'price', header: 'Price', render: (p) => `$${p.price}` },
-      { key: 'stock', header: 'Stock', render: (p) => (p.stock <= 3 ? <Badge tone="warn">Low ({p.stock})</Badge> : p.stock) },
-      { key: 'color', header: 'Color' },
+      { key: 'name', header: Text.admin.products.columns.product, render: (p) => <strong>{p.name}</strong> },
+      { key: 'category', header: Text.admin.products.columns.category },
+      { key: 'price', header: Text.admin.products.columns.price, render: (p) => `$${p.price}` },
+      {
+        key: 'stock',
+        header: Text.admin.products.columns.stock,
+        render: (p) => (p.stock <= 3 ? <Badge tone="warn">{Text.admin.products.stock.low(p.stock)}</Badge> : p.stock),
+      },
+      { key: 'color', header: Text.admin.products.columns.color },
       {
         key: 'actions',
-        header: 'Actions',
+        header: Text.admin.products.columns.actions,
         render: (p) => (
-          <div style={{ display: 'flex', gap: 10 }}>
+          <div style={{ display: 'flex', gap: sizes.admin.products.actionsGap }}>
             <Button
               variant="secondary"
               onClick={(e) => {
@@ -194,7 +230,7 @@ const Products = () => {
                 setModalOpen(true);
               }}
             >
-              Edit
+              {Text.admin.actions.edit}
             </Button>
             <Button
               variant="danger"
@@ -205,7 +241,7 @@ const Products = () => {
                 try {
                   await deleteProduct(p.id);
                   dispatch({ type: 'REMOVE', id: p.id });
-                  notifications.addNotification({ type: 'info', message: `Product deleted: ${p.name}.` });
+                  notifications.addNotification({ type: 'info', message: Text.admin.products.notifications.deleted(p.name) });
                 } catch {
                   // ignore (mock)
                 } finally {
@@ -213,18 +249,18 @@ const Products = () => {
                 }
               }}
             >
-              {deletingId === p.id ? 'Deleting…' : 'Delete'}
+              {deletingId === p.id ? Text.admin.common.deleting : Text.admin.actions.delete}
             </Button>
           </div>
         ),
       },
     ],
-    [deletingId]
+    [deletingId, notifications]
   );
 
   return (
     <Card
-      title="Products"
+      title={Text.admin.products.title}
       action={
         <Button
           onClick={() => {
@@ -232,17 +268,17 @@ const Products = () => {
             setModalOpen(true);
           }}
         >
-          New product
+          {Text.admin.products.newProduct}
         </Button>
       }
     >
       {state.loading ? (
-        <Spinner label="Loading products" />
+        <Spinner label={Text.admin.products.loading} />
       ) : state.error ? (
-        <div style={{ display: 'grid', gap: 12 }}>
+        <div style={{ display: 'grid', gap: sizes.admin.gaps.lg }}>
           <div className="uiErrorText">{state.error}</div>
           <Button variant="secondary" onClick={load}>
-            Retry
+            {Text.admin.actions.retry}
           </Button>
         </div>
       ) : (
@@ -263,9 +299,10 @@ const Products = () => {
         onSave={async (payload) => {
           const result = editing ? await updateProduct(editing.id, payload) : await createProduct(payload);
           dispatch({ type: 'UPSERT', product: result });
+          const mode = editing ? 'Product updated' : 'Product created';
           notifications.addNotification({
             type: result.stock <= 3 ? 'warn' : 'info',
-            message: `${editing ? 'Product updated' : 'Product created'}: ${result.name}.`,
+            message: Text.admin.products.notifications.saved(mode, result.name),
           });
         }}
       />

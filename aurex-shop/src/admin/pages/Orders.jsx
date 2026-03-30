@@ -7,6 +7,8 @@ import Card from '../components/ui/Card';
 import Input from '../components/ui/Input';
 import Spinner from '../components/ui/Spinner';
 import Table from '../components/ui/Table';
+import sizes from '../../universal components/sizes';
+import Text from '../../universal components/textstring';
 
 const initial = {
   loading: true,
@@ -22,7 +24,7 @@ function reducer(state, action) {
     case 'LOAD_SUCCESS':
       return { ...state, loading: false, error: null, orders: action.orders };
     case 'LOAD_ERROR':
-      return { ...state, loading: false, error: action.error || 'Failed to load data' };
+      return { ...state, loading: false, error: action.error || Text.admin.common.failedToLoad };
     case 'UPDATING':
       return { ...state, updating: { ...state.updating, [action.id]: true } };
     case 'UPDATED': {
@@ -61,7 +63,7 @@ const Orders = () => {
       const orders = await getOrders();
       dispatch({ type: 'LOAD_SUCCESS', orders });
     } catch (e) {
-      dispatch({ type: 'LOAD_ERROR', error: e?.message || 'Failed to load data' });
+      dispatch({ type: 'LOAD_ERROR', error: e?.message || Text.admin.common.failedToLoad });
     }
   };
 
@@ -72,16 +74,20 @@ const Orders = () => {
 
   const columns = useMemo(
     () => [
-      { key: 'id', header: 'Order' },
-      { key: 'customerName', header: 'Customer' },
-      { key: 'createdAt', header: 'Date' },
-      { key: 'total', header: 'Total', render: (o) => `$${o.total}` },
-      { key: 'status', header: 'Status', render: (o) => <Badge tone={statusTone(o.status)}>{o.status}</Badge> },
+      { key: 'id', header: Text.admin.orders.columns.order },
+      { key: 'customerName', header: Text.admin.orders.columns.customer },
+      { key: 'createdAt', header: Text.admin.orders.columns.date },
+      { key: 'total', header: Text.admin.orders.columns.total, render: (o) => `$${o.total}` },
+      {
+        key: 'status',
+        header: Text.admin.orders.columns.status,
+        render: (o) => <Badge tone={statusTone(o.status)}>{o.status}</Badge>,
+      },
       {
         key: 'update',
-        header: 'Update',
+        header: Text.admin.orders.columns.update,
         render: (o) => (
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: sizes.admin.orders.updateRowGap }}>
             <Input
               as="select"
               value={o.status}
@@ -93,7 +99,7 @@ const Orders = () => {
                   dispatch({ type: 'UPDATED', order: updated });
                   notifications.addNotification({
                     type: 'info',
-                    message: `Order ${updated.id} updated to ${updated.status}.`,
+                    message: Text.admin.orders.notifications.statusUpdated(updated.id, updated.status),
                   });
                 } catch {
                   dispatch({ type: 'UPDATE_FAILED', id: o.id });
@@ -101,27 +107,27 @@ const Orders = () => {
               }}
               disabled={Boolean(state.updating[o.id])}
             >
-              <option>Pending</option>
-              <option>Shipped</option>
-              <option>Delivered</option>
+              <option>{Text.admin.orders.status.pending}</option>
+              <option>{Text.admin.orders.status.shipped}</option>
+              <option>{Text.admin.orders.status.delivered}</option>
             </Input>
-            {state.updating[o.id] ? <span className="uiHelpText">Saving…</span> : null}
+            {state.updating[o.id] ? <span className="uiHelpText">{Text.admin.orders.updating.saving}</span> : null}
           </div>
         ),
       },
     ],
-    [state.updating]
+    [state.updating, notifications]
   );
 
   return (
-    <Card title="Orders">
+    <Card title={Text.admin.orders.title}>
       {state.loading ? (
-        <Spinner label="Loading orders" />
+        <Spinner label={Text.admin.orders.loading} />
       ) : state.error ? (
-        <div style={{ display: 'grid', gap: 12 }}>
+        <div style={{ display: 'grid', gap: sizes.admin.gaps.lg }}>
           <div className="uiErrorText">{state.error}</div>
           <Button variant="secondary" onClick={load}>
-            Retry
+            {Text.admin.actions.retry}
           </Button>
         </div>
       ) : (

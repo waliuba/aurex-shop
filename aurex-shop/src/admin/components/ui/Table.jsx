@@ -1,4 +1,7 @@
-const Table = ({ columns, data, keyField = 'id', emptyLabel = 'No results', rowAction }) => {
+import Text from '../../../universal components/textstring';
+import colorstring from '../../../universal components/colorstrings';
+
+const Table = ({ columns, data, keyField = 'id', emptyLabel = Text.admin.common.noResults, rowAction }) => {
   return (
     <div className="uiTableWrap">
       <table className="uiTable">
@@ -12,7 +15,7 @@ const Table = ({ columns, data, keyField = 'id', emptyLabel = 'No results', rowA
         <tbody>
           {data.length === 0 ? (
             <tr>
-              <td colSpan={columns.length} style={{ color: 'rgba(255,255,255,0.65)' }}>
+              <td colSpan={columns.length} style={{ color: colorstring.admin.mutedStrong }}>
                 {emptyLabel}
               </td>
             </tr>
@@ -36,4 +39,3 @@ const Table = ({ columns, data, keyField = 'id', emptyLabel = 'No results', rowA
 };
 
 export default Table;
-

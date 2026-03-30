@@ -1,11 +1,12 @@
 import Button from '../ui/Button';
+import Text from '../../../universal components/textstring';
 
 const nav = [
-  { key: 'dashboard', label: 'Dashboard', href: '#/admin' },
-  { key: 'products', label: 'Products', href: '#/admin/products' },
-  { key: 'orders', label: 'Orders', href: '#/admin/orders' },
-  { key: 'customers', label: 'Customers', href: '#/admin/customers' },
-  { key: 'inventory', label: 'Inventory', href: '#/admin/inventory' },
+  { key: 'dashboard', label: Text.admin.nav.dashboard, href: '#/admin' },
+  { key: 'products', label: Text.admin.nav.products, href: '#/admin/products' },
+  { key: 'orders', label: Text.admin.nav.orders, href: '#/admin/orders' },
+  { key: 'customers', label: Text.admin.nav.customers, href: '#/admin/customers' },
+  { key: 'inventory', label: Text.admin.nav.inventory, href: '#/admin/inventory' },
 ];
 
 const Sidebar = ({ active }) => {
@@ -14,8 +15,8 @@ const Sidebar = ({ active }) => {
       <div className="adminSidebar__brand">
         <div className="adminSidebar__logo" aria-hidden="true" />
         <div>
-          <div className="adminSidebar__kicker">Aurex</div>
-          <div className="adminSidebar__title">Admin</div>
+          <div className="adminSidebar__kicker">{Text.admin.brand.app}</div>
+          <div className="adminSidebar__title">{Text.admin.brand.adminLabel}</div>
         </div>
       </div>
 
@@ -33,7 +34,7 @@ const Sidebar = ({ active }) => {
 
       <div className="adminSidebar__footer">
         <Button href="#/" variant="ghost">
-          Back to store
+          {Text.admin.actions.backToStore}
         </Button>
       </div>
     </aside>
@@ -41,4 +42,3 @@ const Sidebar = ({ active }) => {
 };
 
 export default Sidebar;
-

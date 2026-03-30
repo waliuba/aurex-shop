@@ -1,7 +1,8 @@
-import colorstring from '../universal components/colorstring';
+import colorstring from '../universal components/colorstrings';
 import fonts from '../universal components/fonts';
 import sizes from '../universal components/sizes';
 import Btn from '../universal components/ui/btns';
+import Text from '../universal components/textstring';
 import './pages.css';
 
 const Returns = () => {
@@ -26,31 +27,23 @@ const Returns = () => {
     >
       <div className="container stack">
         <section className="hero">
-          <h1 className="hero__title">Returns</h1>
-          <p className="hero__subtitle">
-            Simple return policy UI. Replace the text with your real policy.
-          </p>
+          <h1 className="hero__title">{Text.pages.returns.title}</h1>
+          <p className="hero__subtitle">{Text.pages.returns.subtitle}</p>
           <div className="actions">
             <Btn variant="secondary" href="/#/contact">
-              Contact support
+              {Text.pages.returns.contactSupport}
             </Btn>
           </div>
         </section>
 
         <section className="card">
-          <h2 className="sectionTitle">Return window</h2>
-          <p className="card__meta">
-            Returns accepted within 7–14 days of delivery if items are unused
-            and in original condition.
-          </p>
+          <h2 className="sectionTitle">{Text.pages.returns.window.title}</h2>
+          <p className="card__meta">{Text.pages.returns.window.body}</p>
         </section>
 
         <section className="card">
-          <h2 className="sectionTitle">How to return</h2>
-          <p className="card__meta">
-            Reach out via the Contact page with your order details, then follow
-            the provided instructions.
-          </p>
+          <h2 className="sectionTitle">{Text.pages.returns.howTo.title}</h2>
+          <p className="card__meta">{Text.pages.returns.howTo.body}</p>
         </section>
       </div>
     </main>

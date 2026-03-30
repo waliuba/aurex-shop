@@ -1,10 +1,12 @@
 import Images from '../imagestring';
-import colorstring from '../colorstring';
+import colorstring from '../colorstrings';
 import fonts from '../fonts';
 import sizes from '../sizes';
 import Btn from '../ui/btns';
 import './navbar.css';
-import Text from '../texttring';
+import Text from '../textstring';
+import { useCart } from '../../context/CartContext';
+import { useSession } from '../../context/SessionContext';
 
 // navlinks
 
@@ -16,10 +18,13 @@ const navLinks = [
 ];
 
 const Navbar = () => {
+  const cart = useCart();
+  const session = useSession();
+
   return (
     <nav
       className="navbar"
-      aria-label="Primary"
+      aria-label={Text.navbar.ariaLabelPrimary}
       style={{
         '--navbar-height': `${sizes.navbar.height}px`,
         '--navbar-padding-x': `${sizes.navbar.paddingX}px`,
@@ -35,8 +40,8 @@ const Navbar = () => {
       }}
     >
       <a className="navbar__brand" href="/#/">
-        <img className="navbar__logo" src={Images.logo} alt="Aurex" />
-        <span>Aurex</span>
+        <img className="navbar__logo" src={Images.logo} alt={Text.tittle.head} />
+        <span>{Text.tittle.head}</span>
       </a>
 
       <ul className="navbar__links">
@@ -50,7 +55,13 @@ const Navbar = () => {
       </ul>
 
       <div className="navbar__actions">
-        <Btn href="/#/register">Register</Btn>
+        <Btn variant="secondary" href="/#/dashboard">
+          Dashboard
+        </Btn>
+        <Btn variant="secondary" onClick={cart.toggleCart}>
+          Cart ({cart.totals.itemCount})
+        </Btn>
+        {session.user.role === 'guest' ? <Btn href="/#/register">{Text.navbar.registerCta}</Btn> : null}
       </div>
     </nav>
   );

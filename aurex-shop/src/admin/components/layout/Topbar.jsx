@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useNotifications } from '../../context/NotificationsContext';
 import Button from '../ui/Button';
+import sizes from '../../../universal components/sizes';
+import Text from '../../../universal components/textstring';
 
 const Topbar = ({ pageLabel }) => {
   const auth = useAuth();
@@ -12,7 +14,7 @@ const Topbar = ({ pageLabel }) => {
   return (
     <header className="adminTopbar">
       <div className="adminTopbar__title">
-        <h1>Admin Dashboard</h1>
+        <h1>{Text.admin.topbar.title}</h1>
         <p>{pageLabel}</p>
       </div>
 
@@ -25,24 +27,24 @@ const Topbar = ({ pageLabel }) => {
               setNotifOpen((v) => !v);
               setProfileOpen(false);
             }}
-            aria-label="Notifications"
+            aria-label={Text.admin.topbar.notificationsAria}
           >
-            <span aria-hidden="true">🔔</span>
+            <span aria-hidden="true">!</span>
             {notifications.unreadCount ? <span className="adminPill">{notifications.unreadCount}</span> : null}
           </button>
           {notifOpen ? (
             <div className="adminMenu" role="menu" style={{ minWidth: 340 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 10 }}>
-                <div style={{ fontWeight: 850 }}>Notifications</div>
-                <div style={{ display: 'flex', gap: 10 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: sizes.admin.gaps.md }}>
+                <div style={{ fontWeight: 850 }}>{Text.admin.topbar.notificationsTitle}</div>
+                <div style={{ display: 'flex', gap: sizes.admin.gaps.md }}>
                   <Button variant="ghost" onClick={notifications.markAllRead}>
-                    Mark all read
+                    {Text.admin.actions.markAllRead}
                   </Button>
                 </div>
               </div>
-              <div style={{ display: 'grid', gap: 10, maxHeight: 320, overflow: 'auto', paddingRight: 4 }}>
+              <div style={{ display: 'grid', gap: sizes.admin.gaps.md, maxHeight: 320, overflow: 'auto', paddingRight: 4 }}>
                 {notifications.items.length === 0 ? (
-                  <div className="uiHelpText">No notifications</div>
+                  <div className="uiHelpText">{Text.admin.topbar.noNotifications}</div>
                 ) : (
                   notifications.items.map((n) => (
                     <button
@@ -73,7 +75,8 @@ const Topbar = ({ pageLabel }) => {
           >
             <span className="adminProfileBtn__dot" aria-hidden="true" />
             <span className="adminProfileBtn__text">
-              {auth.user?.name || 'Admin'} <span className="adminProfileBtn__muted">{auth.user?.email}</span>
+              {auth.user?.name || Text.admin.topbar.defaultUserName}{' '}
+              <span className="adminProfileBtn__muted">{auth.user?.email}</span>
             </span>
           </button>
           {profileOpen ? (
@@ -89,7 +92,7 @@ const Topbar = ({ pageLabel }) => {
                   window.location.hash = '#/admin/login';
                 }}
               >
-                Logout
+                {Text.admin.actions.logout}
               </Button>
             </div>
           ) : null}

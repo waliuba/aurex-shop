@@ -1,5 +1,5 @@
-import colorstring from '../universal components/colorstring';
-import Text from '../universal components/texttring';
+import colorstring from '../universal components/colorstrings';
+import Text from '../universal components/textstring';
 import fonts from '../universal components/fonts';
 import sizes from '../universal components/sizes';
 import Btn from '../universal components/ui/btns';

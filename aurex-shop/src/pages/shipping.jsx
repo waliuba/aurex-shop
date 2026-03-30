@@ -1,7 +1,8 @@
-import colorstring from '../universal components/colorstring';
+import colorstring from '../universal components/colorstrings';
 import fonts from '../universal components/fonts';
 import sizes from '../universal components/sizes';
 import Btn from '../universal components/ui/btns';
+import Text from '../universal components/textstring';
 import './pages.css';
 
 const Shipping = () => {
@@ -26,32 +27,23 @@ const Shipping = () => {
     >
       <div className="container stack">
         <section className="hero">
-          <h1 className="hero__title">Shipping</h1>
-          <p className="hero__subtitle">
-            Clear, simple shipping information. Update these details to match
-            your real delivery options.
-          </p>
+          <h1 className="hero__title">{Text.pages.shipping.title}</h1>
+          <p className="hero__subtitle">{Text.pages.shipping.subtitle}</p>
           <div className="actions">
             <Btn variant="secondary" href="/#/shop">
-              Continue shopping
+              {Text.pages.shipping.continueShopping}
             </Btn>
           </div>
         </section>
 
         <section className="card">
-          <h2 className="sectionTitle">Delivery times</h2>
-          <p className="card__meta">
-            Standard delivery: 2–5 business days. Express delivery: 1–2 business
-            days (where available).
-          </p>
+          <h2 className="sectionTitle">{Text.pages.shipping.deliveryTimes.title}</h2>
+          <p className="card__meta">{Text.pages.shipping.deliveryTimes.body}</p>
         </section>
 
         <section className="card">
-          <h2 className="sectionTitle">Shipping fees</h2>
-          <p className="card__meta">
-            Shipping fees are calculated at checkout based on location and
-            order size.
-          </p>
+          <h2 className="sectionTitle">{Text.pages.shipping.fees.title}</h2>
+          <p className="card__meta">{Text.pages.shipping.fees.body}</p>
         </section>
       </div>
     </main>

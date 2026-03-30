@@ -1,7 +1,8 @@
-import colorstring from '../universal components/colorstring';
+import colorstring from '../universal components/colorstrings';
 import fonts from '../universal components/fonts';
 import sizes from '../universal components/sizes';
 import Btn from '../universal components/ui/btns';
+import Text from '../universal components/textstring';
 import './pages.css';
 
 const Contact = () => {
@@ -28,34 +29,32 @@ const Contact = () => {
     >
       <div className="container stack">
         <section className="hero">
-          <h1 className="hero__title">Contact</h1>
-          <p className="hero__subtitle">
-            Send us a message and we’ll get back to you. 
-          </p>
+          <h1 className="hero__title">{Text.pages.contact.title}</h1>
+          <p className="hero__subtitle">{Text.pages.contact.subtitle}</p>
         </section>
 
         <section className="card">
-          <h2 className="sectionTitle">Message</h2>
+          <h2 className="sectionTitle">{Text.pages.contact.messageTitle}</h2>
           <form className="form" onSubmit={(event) => event.preventDefault()}>
             <div className="field">
-              <label htmlFor="name">Name</label>
-              <input id="name" name="name" placeholder="Your name" />
+              <label htmlFor="name">{Text.pages.contact.form.name.label}</label>
+              <input id="name" name="name" placeholder={Text.pages.contact.form.name.placeholder} />
             </div>
             <div className="field">
-              <label htmlFor="email">Email</label>
-              <input id="email" name="email" placeholder="you@example.com" />
+              <label htmlFor="email">{Text.pages.contact.form.email.label}</label>
+              <input id="email" name="email" placeholder={Text.pages.contact.form.email.placeholder} />
             </div>
             <div className="field">
-              <label htmlFor="message">Message</label>
+              <label htmlFor="message">{Text.pages.contact.form.message.label}</label>
               <textarea
                 id="message"
                 name="message"
                 rows={5}
-                placeholder="How can we help?"
+                placeholder={Text.pages.contact.form.message.placeholder}
               />
             </div>
             <div className="actions">
-              <Btn type="submit">Send Message</Btn>
+              <Btn type="submit">{Text.pages.contact.form.submit}</Btn>
             </div>
           </form>
         </section>

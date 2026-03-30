@@ -1,6 +1,7 @@
-import colorstring from '../universal components/colorstring';
+import colorstring from '../universal components/colorstrings';
 import fonts from '../universal components/fonts';
 import sizes from '../universal components/sizes';
+import Text from '../universal components/textstring';
 import './pages.css';
 
 const products = [
@@ -36,15 +37,12 @@ const Shop = () => {
     >
       <div className="container stack">
         <section className="hero">
-          <h1 className="hero__title">Shop</h1>
-          <p className="hero__subtitle">
-            A simple product grid to match your current styling. Replace these
-            items with real data when you’re ready.
-          </p>
+          <h1 className="hero__title">{Text.pages.shop.title}</h1>
+          <p className="hero__subtitle">{Text.pages.shop.subtitle}</p>
         </section>
 
         <section className="stack">
-          <h2 className="sectionTitle">Products</h2>
+          <h2 className="sectionTitle">{Text.pages.shop.productsTitle}</h2>
           <div className="grid">
             {products.map((product) => (
               <div className="card" key={product.name}>
