@@ -12,6 +12,7 @@ export const SessionProvider = ({ children, initialUser }) => {
   const [user, setUser] = useState(
     initialUser || {
       name: 'Avery Carter',
+      email: 'avery@aurex.shop',
       role: 'customer',
     }
   );
@@ -27,4 +28,3 @@ export const SessionProvider = ({ children, initialUser }) => {
 
   return <SessionContext.Provider value={value}>{children}</SessionContext.Provider>;
 };
-

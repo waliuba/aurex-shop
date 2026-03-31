@@ -3,7 +3,7 @@ import Navbar from './universal components/layout/navbar';
 import Footer from './universal components/layout/footer';
 import { useEffect, useState } from 'react';
 import AdminApp from './admin/AdminApp';
-import Aurex from './u-dashboard/Aurex-shop';
+import Aurex from './universal components/aurex-dashboard/Aurex-shop';
 import { CartProvider } from './context/CartContext';
 import { SessionProvider } from './context/SessionContext';
 import CartModal from './universal components/ui/CartModal';

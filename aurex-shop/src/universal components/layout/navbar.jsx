@@ -55,12 +55,12 @@ const Navbar = () => {
       </ul>
 
       <div className="navbar__actions">
-        <Btn variant="secondary" href="/#/dashboard">
+        {/* <Btn variant="secondary" href="/#/dashboard">
           Dashboard
-        </Btn>
-        <Btn variant="secondary" onClick={cart.toggleCart}>
+        </Btn> */}
+        {/* <Btn variant="secondary" onClick={cart.toggleCart}>
           Cart ({cart.totals.itemCount})
-        </Btn>
+        </Btn> */}
         {session.user.role === 'guest' ? <Btn href="/#/register">{Text.navbar.registerCta}</Btn> : null}
       </div>
     </nav>

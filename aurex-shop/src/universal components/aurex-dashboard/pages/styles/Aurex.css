@@ -1,4 +1,4 @@
-.meridian {
+.aurex {
   min-height: 100vh;
   background: #0f1014;
   color: rgba(255, 255, 255, 0.92);
@@ -379,6 +379,170 @@
   gap: 10px;
 }
 
+.mdNavLink--active {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.mdSidebar__footer {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+}
+
+.mdGrid--user {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+}
+
+.mdSectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.mdSectionTitle {
+  font-weight: 900;
+}
+
+.mdProfileSummary {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.mdAvatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-weight: 950;
+}
+
+.mdProfileName {
+  font-weight: 950;
+}
+
+.mdFormGrid {
+  display: grid;
+  gap: 12px;
+}
+
+.mdFormGrid--2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.mdFormLabel {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.62);
+  margin-bottom: 6px;
+}
+
+.mdDivider {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mdOrderList {
+  display: grid;
+  gap: 10px;
+}
+
+.mdOrderCard {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.14);
+}
+
+.mdOrderCard__id {
+  font-weight: 950;
+}
+
+.mdOrderCard__right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mdOrderCard__total {
+  font-weight: 950;
+}
+
+.mdCartPreviewList {
+  display: grid;
+  gap: 10px;
+}
+
+.mdCartPreviewRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 10px;
+}
+
+.mdCartPreviewRow:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.mdCartPreviewFooter {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mdCartPreviewActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.mdWishlistItem {
+  display: grid;
+  gap: 10px;
+}
+
+.mdWishlistActions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mdAddressList {
+  display: grid;
+  gap: 10px;
+}
+
+.mdAddressCard {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.14);
+  display: grid;
+  gap: 6px;
+}
+
+.mdPill--cancelled {
+  border-color: rgba(249, 115, 115, 0.4);
+  background: rgba(249, 115, 115, 0.12);
+}
+
 @media (max-width: 980px) {
   .mdLayout {
     grid-template-columns: 1fr;
@@ -397,5 +561,12 @@
     min-width: 0;
     width: 100%;
   }
-}
 
+  .mdGrid--user {
+    grid-template-columns: 1fr;
+  }
+
+  .mdFormGrid--2 {
+    grid-template-columns: 1fr;
+  }
+}

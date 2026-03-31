@@ -1,5 +1,5 @@
-import { useCart } from '../../context/CartContext';
-import Button from '../ui/Button';
+import { useCart } from './context/CartContext';
+import Button from './Button';
 
 const money = (n) => `$${Number(n || 0).toLocaleString()}`;
 
