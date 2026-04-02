@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useCart } from '../context/CartContext';
-import DashboardLayout from '../components/layout/DashboardLayout';
-import ProfileSummary from '../components/profile/ProfileSummary';
-import OrderHistory from '../components/orders/OrderHistory';
-import CartPreview from '../components/cart/CartPreview';
-import Wishlist from '../components/wishlist/Wishlist';
-import AddressBook from '../components/address/AddressBook';
-import CartModal from '../CartModal';
+import { useCart } from '../universal components/aurex-dashboard/context/CartContext';
+import DashboardLayout from '../universal components/aurex-dashboard/components/layout/DashboardLayout';
+import ProfileSummary from '../universal components/aurex-dashboard/components/profile/ProfileSummary';
+import OrderHistory from '../universal components/aurex-dashboard/components/orders/OrderHistory';
+import CartPreview from '../universal components/aurex-dashboard/components/cart/CartPreview';
+import Wishlist from '../universal components/aurex-dashboard/components/wishlist/Wishlist';
+import AddressBook from '../universal components/aurex-dashboard/components/address/AddressBook';
+import CartModal from '../universal components/aurex-dashboard/CartModal';
 
 const getRouteKey = () => {
   const hash = window.location.hash || '#/aurex';

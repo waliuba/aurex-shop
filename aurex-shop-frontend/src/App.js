@@ -17,7 +17,13 @@ import Register from './pages/register';
 import Shipping from './pages/shipping';
 import Returns from './pages/returns';
 import Faq from './pages/faq';
-import Dashboard from './pages/dashboard';
+
+const DashboardRedirect = () => {
+  useEffect(() => {
+    window.location.hash = '#/aurex';
+  }, []);
+  return null;
+};
 
 const getHashPath = () => {
   const hash = window.location.hash || '#/';
@@ -43,7 +49,7 @@ function App() {
     home: Home,
     register: Register,
     login: Login,
-    dashboard: Dashboard,
+    dashboard: DashboardRedirect,
     shop: Shop,
     about: About,
     contact: Contact,

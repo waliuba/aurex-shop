@@ -1,6 +1,6 @@
 import { CartProvider } from './context/CartContext';
 import { SessionProvider } from './context/SessionContext';
-import Dashboard from './pages/usersdash';
+import Dashboard from '../../pages/dashboard.jsx';
 import './pages/styles/Aurex.css';
 
 

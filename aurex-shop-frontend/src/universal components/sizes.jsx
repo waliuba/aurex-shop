@@ -122,5 +122,5 @@ const sizes = {
 
 }
 
-export { sizes };
+
 export default sizes;
