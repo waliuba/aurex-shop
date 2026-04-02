@@ -5,7 +5,7 @@ import sizes from '../sizes';
 import Btn from '../ui/btns';
 import './navbar.css';
 import Text from '../textstring';
-import { useCart } from '../../context/CartContext';
+// import { useCart } from '../../context/CartContext';
 import { useSession } from '../../context/SessionContext';
 
 // navlinks
@@ -18,7 +18,7 @@ const navLinks = [
 ];
 
 const Navbar = () => {
-  const cart = useCart();
+  // const cart = useCart();
   const session = useSession();
 
   return (
@@ -55,12 +55,7 @@ const Navbar = () => {
       </ul>
 
       <div className="navbar__actions">
-        {/* <Btn variant="secondary" href="/#/dashboard">
-          Dashboard
-        </Btn> */}
-        {/* <Btn variant="secondary" onClick={cart.toggleCart}>
-          Cart ({cart.totals.itemCount})
-        </Btn> */}
+       
         {session.user.role === 'guest' ? <Btn href="/#/register">{Text.navbar.registerCta}</Btn> : null}
       </div>
     </nav>
