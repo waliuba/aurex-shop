@@ -1,7 +1,8 @@
 import 'dotenv/config';
-
 import express from 'express';
 import connectDB from './config/axdb.js';
+import authRoutes from './routes/authRoutes.js';
+import productroute from './routes/productroute.js';
 
 const app = express();
 
@@ -14,8 +15,11 @@ connectDB();
 app.use(express.json());
 
 // routes
-import authRoutes from './routes/authRoutes.js';
+
+// Authroutes
 app.use('/api/auth', authRoutes);
+// products route.
+app.use('/api/products', productroute);
 
 // test route
 app.get('/', (req, res) => {

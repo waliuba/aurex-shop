@@ -77,11 +77,17 @@ const Text = {
                     "We keep the palette calm and premium, focus on typography, and let the product speak. This project is structured to scale: you can plug in real products, categories, and payments later without changing the visual system.",
             },
         },
+
+        // SHOP PAGE
+
         shop: {
             title: "Shop",
             subtitle: "A simple product grid to match your current styling. Replace these items with real data when you're ready.",
             productsTitle: "Products",
         },
+
+        // CONTACT PAGE
+
         contact: {
             title: "Contact",
             subtitle: "Send us a message and we'll get back to you.",
@@ -93,6 +99,9 @@ const Text = {
                 submit: "Send Message",
             },
         },
+
+        // FAQ
+
         faq: {
             title: "FAQ",
             subtitle: "Quick answers to common questions.",
@@ -244,6 +253,7 @@ const Text = {
     },
 
     // admin
+    
     admin: {
         actions: {
             close: "Close",
