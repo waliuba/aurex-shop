@@ -8,6 +8,13 @@ const orderSchema = new mongoose.Schema(
       required: true,
     },
 
+    // Simple order status used by the admin dashboard
+    status: {
+      type: String,
+      enum: ['Pending', 'Shipped', 'Delivered'],
+      default: 'Pending',
+    },
+
     orderItems: [
       {
         name: { type: String, required: true },

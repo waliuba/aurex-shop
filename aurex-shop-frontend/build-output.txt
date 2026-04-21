@@ -1,0 +1,12 @@
+
+> aurex-shop@0.1.0 build
+> react-scripts build
+
+Creating an optimized production build...
+RpcIpcMessagePortClosedError: Cannot send the message - the message port has been closed for the process 28748.
+Issues checking service aborted - probably out of memory. Check the `memoryLimit` option in the ForkTsCheckerWebpackPlugin configuration.
+If increasing the memory doesn't solve the issue, it's most probably a bug in the TypeScript or EsLint.
+RpcIpcMessagePortClosedError: Cannot send the message - the message port has been closed for the process 30108.
+Issues checking service aborted - probably out of memory. Check the `memoryLimit` option in the ForkTsCheckerWebpackPlugin configuration.
+If increasing the memory doesn't solve the issue, it's most probably a bug in the TypeScript or EsLint.
+^Cnpm error A complete log of this run can be found in: C:\Users\Admin\AppData\Local\npm-cache\_logs\2026-04-21T09_07_45_560Z-debug-0.log
