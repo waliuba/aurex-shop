@@ -7,6 +7,7 @@ import Aurex from './universal components/aurex-dashboard/Aurex-shop';
 import { CartProvider } from './context/CartContext';
 import { SessionProvider } from './context/SessionContext';
 import CartModal from './universal components/ui/CartModal';
+import UserDashboardApp from './pages/dashboard/UserDashboardApp';
 
 import Home from './pages/home';
 import Shop from './pages/shop';
@@ -17,13 +18,6 @@ import Register from './pages/register';
 import Shipping from './pages/shipping';
 import Returns from './pages/returns';
 import Faq from './pages/faq';
-
-const DashboardRedirect = () => {
-  useEffect(() => {
-    window.location.hash = '#/aurex';
-  }, []);
-  return null;
-};
 
 const getHashPath = () => {
   const hash = window.location.hash || '#/';
@@ -43,13 +37,13 @@ function App() {
 
   const isAdmin = path.startsWith('admin');
   const isAurex = path.startsWith('aurex');
+  const isDashboard = path.startsWith('dashboard');
 
   const pages = {
     '': Home,
     home: Home,
     register: Register,
     login: Login,
-    dashboard: DashboardRedirect,
     shop: Shop,
     about: About,
     contact: Contact,
@@ -73,10 +67,16 @@ function App() {
       ) : (
         <SessionProvider>
           <CartProvider>
-            <Navbar />
-            <Page />
-            <Footer />
-            <CartModal />
+            {isDashboard ? (
+              <UserDashboardApp path={path} />
+            ) : (
+              <>
+                <Navbar />
+                <Page />
+                <Footer />
+                <CartModal />
+              </>
+            )}
           </CartProvider>
         </SessionProvider>
       )}

@@ -1,3 +1,5 @@
+import { safeJsonParse, safeLocalStorageGet, safeLocalStorageRemove, safeLocalStorageSet } from '../utils/storage';
+
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const maybeFail = (failureRate = 0.08) => {
@@ -9,6 +11,35 @@ const maybeFail = (failureRate = 0.08) => {
 };
 
 const uid = () => `${Date.now()}_${Math.random().toString(16).slice(2)}`;
+
+const ME_STORAGE_KEY = 'aurex_mock_me_v1';
+const PW_STORAGE_KEY = 'aurex_mock_pw_v1';
+
+const defaultMe = () => ({
+  id: 'u_001',
+  name: 'Adrian Miles',
+  email: 'adrian@example.com',
+  username: 'adrian',
+  phone: '',
+  location: '',
+  bio: '',
+  avatar: '',
+  role: 'customer',
+});
+
+const loadMe = () => {
+  const raw = safeLocalStorageGet(ME_STORAGE_KEY);
+  const parsed = safeJsonParse(raw, null);
+  if (!parsed || typeof parsed !== 'object') return defaultMe();
+  return { ...defaultMe(), ...parsed };
+};
+
+const saveMe = (user) => {
+  safeLocalStorageSet(ME_STORAGE_KEY, JSON.stringify(user || {}));
+};
+
+const loadPassword = () => safeLocalStorageGet(PW_STORAGE_KEY) || 'password';
+const savePassword = (value) => safeLocalStorageSet(PW_STORAGE_KEY, String(value || ''));
 
 let db = {
   products: [
@@ -201,6 +232,42 @@ export async function getOrders() {
   await delay(650);
   maybeFail();
   return [...db.orders];
+}
+
+export async function getMyOrders() {
+  return getOrders();
+}
+
+export async function getMe() {
+  await delay(450);
+  maybeFail(0.06);
+  return { user: loadMe() };
+}
+
+export async function updateMyProfile(profileUpdates) {
+  await delay(650);
+  maybeFail(0.05);
+  const next = { ...loadMe(), ...(profileUpdates || {}) };
+  saveMe(next);
+  return next;
+}
+
+export async function changeMyPassword({ currentPassword, newPassword }) {
+  await delay(650);
+  maybeFail(0.03);
+  if (String(currentPassword || '') !== loadPassword()) {
+    throw new Error('Current password is incorrect');
+  }
+  savePassword(newPassword);
+  return { ok: true };
+}
+
+export async function deleteMe() {
+  await delay(650);
+  maybeFail(0.02);
+  safeLocalStorageRemove(ME_STORAGE_KEY);
+  safeLocalStorageRemove(PW_STORAGE_KEY);
+  return { ok: true };
 }
 
 export async function updateOrderStatus(orderId, status) {
